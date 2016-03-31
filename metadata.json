@@ -4,9 +4,9 @@
   "author": "ncorrare",
   "summary": "A module to configure the pe-slack-bot for interacting with Puppet Orchestrator / PuppetDB",
   "license": "Apache-2.0",
-  "source": "https://github.com/ncorrare/pe_slack_bot",
-  "project_page": "https://github.com/ncorrare/pe_slack_bot",
-  "issues_url": "https://github.com/ncorrare/pe_slack_bot/issues",
+  "source": "https://github.com/ncorrare/ncorrare-pe_slack_bot",
+  "project_page": "https://github.com/ncorrare/ncorrare-pe_slack_bot",
+  "issues_url": "https://github.com/ncorrare/ncorrare-pe_slack_bot/issues",
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
