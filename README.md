@@ -50,6 +50,10 @@ The bot is designed to run with the Puppet Enterprise Ruby (in order not to affe
 - dotenv
 - slack-ruby-bot
 - puppetdb-ruby
+- foreman
+- json_pure
+- rspec
+- rake-tests
 
 It also creates a configuration file in the Puppet configuration directory (/etc/puppetlabs/puppet by default), and a systemd service to run the bot at start time (after the start of pe-orchestration-services).
 Finally in clones the master (stable) branch of the bot from https://github.com/ncorrare/pe-slack-bot in /opt/pe-slack-bot. You can specify a $version variable upon classification to fix it to a specific tag.
