@@ -1,4 +1,4 @@
-# skel
+# pe_slack_bot
 [![Build Status](https://travis-ci.org/ncorrare/ncorrare-pe_slack_bot.svg?branch=master)](https://travis-ci.org/ncorrare/ncorrare-pe_slack_bot)
 
 #### Table of Contents
@@ -6,7 +6,7 @@
 1. [Overview](#overview)
 2. [Setup - The basics of getting started with skel](#setup)
     * [Setup requirements](#setup-requirements)
-    * [Beginning with skel](#beginning-with-pe_slack_bot)
+    * [Beginning with pe_slack_bot](#beginning-with-pe_slack_bot)
     * [What pe_slack_bot affects](#what-pe_slack_bot-affects)
 3. [Limitations - OS compatibility, etc.](#limitations)
 4. [Development - Guide for contributing to the module](#development)
