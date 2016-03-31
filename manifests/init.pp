@@ -5,7 +5,7 @@ class pe_slack_bot (
   $hostpubkey  = $settings::hostcert,
   $cakey       = $settings::localcacert,
 ) {
-  $gemdeps = ['puma','sinatra','dotenv','puppetdb-ruby','slack-ruby-bot']
+  $gemdeps = ['activesupport','puma','sinatra','dotenv','puppetdb-ruby','slack-ruby-bot','bundler','foreman','rspec','json_pure']
   package { $gemdeps:
     ensure   => latest,
     provider => 'puppet_gem',
@@ -39,12 +39,12 @@ class pe_slack_bot (
   }
 
   exec { '/bin/systemctl daemon-reload':
-    notify_only => true,
+    refreshonly => true,
   }
 
   service { 'peslackbot':
     ensure  => running,
-    enabled => true,
+    enable => true,
     require => File['/usr/lib/systemd/system/peslackbot.service'],
   }
 
