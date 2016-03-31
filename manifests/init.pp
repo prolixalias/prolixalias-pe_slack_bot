@@ -44,7 +44,7 @@ class pe_slack_bot (
 
   service { 'peslackbot':
     ensure  => running,
-    enable => true,
+    enable  => true,
     require => File['/usr/lib/systemd/system/peslackbot.service'],
   }
 
