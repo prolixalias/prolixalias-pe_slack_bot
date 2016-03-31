@@ -1,5 +1,5 @@
 # skel
-[![Build Status](https://travis-ci.org/ncorrare/skel.svg?branch=master)](https://travis-ci.org/ncorrare/skel)
+[![Build Status](https://travis-ci.org/ncorrare/ncorrare-pe_slack_bot.svg?branch=master)](https://travis-ci.org/ncorrare/ncorrare-pe_slack_bot)
 
 #### Table of Contents
 
@@ -10,22 +10,19 @@
 
 ## Overview
 
-This is just a boilerplate module that includes testing and automatic deployment to the forge.
+This module configures the PE Bot for Slack.
 
 ## Setup
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements
 
-You need to create (using travis encrypt, from the travis gem) to create the following secure environment variables:
+Classify your Master with the pe_slack_bot. You'll need at least to make your $slack_api_key available as a variable, and in order to do orchestration tasks, you'll need a token in /opt/puppetlabs/server/data/puppetserver/.puppetlabs/token. Gifs will be available soon to illustrate the project, or check the puppet-access documentation. 
 
-- GITHUB_SECRET_TOKEN
-- BLACKSMITH_FORGE_USERNAME
-- BLACKSMITH_FORGE_PASSWORD
+### Beginning with pe_slack_bot
 
-and set up USENETWORK to true and DEPLOY to true in order for deployment to work.
-
-Remaining information is popuplated from Travis environment variables.
-### Beginning with skel
-
-Create a branch, and after doing a PR it will test and merge automatically if tests work. If DEPLOY is set to true it will tag, change metadata.json, commit, push, build and deploy to the forge
-
+Check the documentation on how to use the bot, or try on of the following:
+- puppet status $certname
+- puppet job list <limit> <number>
+- puppet job show $showid
+- puppet app list
+- puppet job run <environment> <app> <noop>
