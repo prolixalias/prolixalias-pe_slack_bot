@@ -5,7 +5,7 @@ class pe_slack_bot (
   $hostpubkey  = $settings::hostcert,
   $cakey       = $settings::localcacert,
 ) {
-  $gemdeps = ['activesupport','puma','sinatra','dotenv','puppetdb-ruby','slack-ruby-bot','bundler','foreman','rspec','json_pure']
+  $gemdeps = ['activesupport','puma','sinatra','dotenv','puppetdb-ruby','slack-ruby-bot','bundler','foreman','rspec','json_pure','rack-test']
   package { $gemdeps:
     ensure   => latest,
     provider => 'puppet_gem',
