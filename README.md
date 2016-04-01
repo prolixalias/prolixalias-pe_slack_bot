@@ -34,6 +34,7 @@ The following animations briefly illustrate how to do it, but for more informati
 
 ### Beginning with pe_slack_bot
 
+First /invite puppet to your channel.
 Check the documentation on how to use the bot, or try on of the following:
 - puppet status $certname
 - puppet job list <limit> <number>
