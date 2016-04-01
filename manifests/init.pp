@@ -27,6 +27,12 @@ class pe_slack_bot (
     revision => 'master',
     require  => File["${settings::confdir}/peslackbot.yaml"],
   }
+  file { '/opt/pe-slack-bot':
+    ensure  => directory,
+    owner   => 'pe-puppet',
+    require => Vcsrepo['/opt/pe-slack-bot'],
+    before  => Service['peslackbot'],
+  }
 
   file { '/usr/lib/systemd/system/peslackbot.service':
     ensure  => present,
