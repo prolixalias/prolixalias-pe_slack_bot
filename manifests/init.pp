@@ -1,7 +1,7 @@
 class pe_slack_bot (
   $slack_api_key,
   $host        = $settings::ca_server,
-  $hostprivkey = $settings::hostpubkey,
+  $hostprivkey = $settings::hostprivkey,
   $hostpubkey  = $settings::hostcert,
   $cakey       = $settings::localcacert,
 ) {
