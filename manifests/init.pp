@@ -6,10 +6,16 @@ class pe_slack_bot (
   $cakey       = $settings::localcacert,
 ) {
   $gemdeps = ['activesupport','puma','sinatra','dotenv','puppetdb-ruby','slack-ruby-bot','bundler','foreman','rspec','json_pure','rack-test']
+  
+  package { 'gcc-c++':
+    ensure   => latest,
+  }
+
   package { $gemdeps:
     ensure   => latest,
     provider => 'puppet_gem',
     before   => Vcsrepo['/opt/pe-slack-bot'],
+    require  => Package['gcc-c++'],
   }
 
   file { "${settings::confdir}/peslackbot.yaml":
