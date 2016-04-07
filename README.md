@@ -28,7 +28,7 @@ In order to do orchestration tasks, you'll need to configure the right permissio
 
 The following animations briefly illustrate how to do it, but for more information please refer to the Puppet Enteprise documentation
 
-<img alt="RBAC" src="http://g.recordit.co/XLvXwjTRLs.gif"/>
+<img alt="RBAC" width="510" height="285" src="http://g.recordit.co/XLvXwjTRLs.gif"/>
 <img alt="puppet-access" src="http://g.recordit.co/X83lQBYUpr.gif"/>
 
 
@@ -42,7 +42,7 @@ Check the documentation on how to use the bot, or try on of the following:
 - puppet app list
 - puppet job run <environment> <app> <noop>
 
-<img alt="puppet status node screenshot" src="http://g.recordit.co/D0soiMMLFQ.gif">
+<img alt="puppet status node screenshot" src="http://g.recordit.co/6DTl3KVelw.gif">
 
 ### What pe_slack_bot affects
 The bot is designed to run with the Puppet Enterprise Ruby (in order not to affect neither Puppet nor the system ruby). It does however install a number of gems:
