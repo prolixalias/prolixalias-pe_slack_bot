@@ -5,8 +5,8 @@ class pe_slack_bot (
   $hostpubkey  = $settings::hostcert,
   $cakey       = $settings::localcacert,
 ) {
-  $gemdeps = ['activesupport','puma','sinatra','dotenv','puppetdb-ruby','slack-ruby-bot','bundler','foreman','rspec','json_pure','rack-test']
-  
+  $gemdeps = ['puma','sinatra','dotenv','puppetdb-ruby','slack-ruby-bot','foreman','rspec','json_pure','rack-test']
+
   package { 'gcc-c++':
     ensure   => latest,
   }
@@ -17,6 +17,14 @@ class pe_slack_bot (
     before   => Vcsrepo['/opt/pe-slack-bot'],
     require  => Package['gcc-c++'],
   }
+
+  package { 'activesupport':
+    ensure   => '4.2.6',
+    provider => 'puppet_gem',
+    before   => Vcsrepo['/opt/pe-slack-bot'],
+    require  => Package['gcc-c++'],
+  }
+
 
   file { "${settings::confdir}/peslackbot.yaml":
     ensure  => present,
