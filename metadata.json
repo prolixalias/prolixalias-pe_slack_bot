@@ -1,6 +1,6 @@
 {
   "name": "ncorrare-pe_slack_bot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "ncorrare",
   "summary": "A module to configure the pe-slack-bot for interacting with Puppet Orchestrator / PuppetDB",
   "license": "Apache-2.0",
