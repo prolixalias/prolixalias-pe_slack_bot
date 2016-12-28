@@ -6,7 +6,7 @@ class pe_slack_bot (
   $cakey       = $settings::localcacert,
 ) {
   $gemdeps = ['puma','sinatra','dotenv','puppetdb-ruby','slack-ruby-bot','foreman','rspec','json_pure','rack-test']
-  
+
   package { 'gcc-c++':
     ensure   => latest,
   }
