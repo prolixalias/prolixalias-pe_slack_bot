@@ -1,5 +1,5 @@
 # pe_slack_bot
-[![Build Status](https://travis-ci.org/ncorrare/ncorrare-pe_slack_bot.svg?branch=master)](https://travis-ci.org/ncorrare/ncorrare-pe_slack_bot)
+[![Build Status](https://travis-ci.org/prolixalias/prolixalias-pe_slack_bot.svg?branch=main)](https://travis-ci.org/prolixalias/prolixalias-pe_slack_bot)
 
 #### Table of Contents
 
@@ -57,7 +57,7 @@ The bot is designed to run with the Puppet Enterprise Ruby (in order not to affe
 - rake-tests
 
 It also creates a configuration file in the Puppet configuration directory (/etc/puppetlabs/puppet by default), and a systemd service to run the bot at start time (after the start of pe-orchestration-services).
-Finally in clones the master (stable) branch of the bot from https://github.com/ncorrare/pe-slack-bot in /opt/pe-slack-bot. You can specify a $version variable upon classification to fix it to a specific tag.
+Finally in clones the main (stable) branch of the bot from https://github.com/prolixalias/pe-slack-bot in /opt/pe-slack-bot. You can specify a $version variable upon classification to fix it to a specific tag.
 
 ### Limitations
 This bot has only been tested in Centos 7, but it should work with most of the certified PE Master operating systems (that use systemd). I'll try to extend the testing to other platforms, and possibly add backwards compatibility to init.d.
