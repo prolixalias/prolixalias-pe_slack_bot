@@ -1,14 +1,14 @@
-# Borrowed from ncorrarello - excellent work sir
+# Borrowed from: Nicolas Corrarello (github/ncorrare) - excellent work sir... I'll send you the result.
 
 class pe_slack_bot (
   String $slack_api_key,
-  String $host        = $settings::ca_server,
+  String $mode,
+  String $source_repo,
+  String $source_branch,
+  String $ca_server = $settings::ca_server,
   String $hostprivkey = $settings::hostprivkey,
-  String $hostpubkey  = $settings::hostcert,
-  String $cakey       = $settings::localcacert,
-  String $mode        = 'install', # uninstall
-  String $source_repo = 'git://github.com/prolixalias/pe-slack-bot.git',
-  String $source_branch = 'main',
+  String $hostcert = $settings::hostcert,
+  String $localcacert = $settings::localcacert,
 ) {
 
   $ensure_latest = $mode ? {
@@ -36,7 +36,7 @@ class pe_slack_bot (
     default     => '4.2.6',
   }
 
-  $gems = ['puma','sinatra','dotenv','puppetdb-ruby','slack-ruby-bot','foreman','rspec','json_pure','rack-test']
+  $gems = [ 'puma','sinatra','dotenv','puppetdb-ruby','slack-ruby-bot','foreman','rspec','json_pure','rack-test' ]
 
   package { 'gcc-c++':
     ensure   => $ensure_latest,
@@ -61,7 +61,7 @@ class pe_slack_bot (
     owner   => 'pe-puppet',
     group   => 'pe-puppet',
     mode    => '0644',
-    content => template('pe_slack_bot/peslackbot.yaml.erb'),
+    content => template('pe_slack_bot/peslackbot.yaml.epp'),
   }
 
   vcsrepo { '/opt/pe-slack-bot':
@@ -83,7 +83,7 @@ class pe_slack_bot (
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => template('pe_slack_bot/peslackbot.service.erb'),
+    content => template('pe_slack_bot/peslackbot.service.epp'),
     notify  => Exec['/bin/systemctl daemon-reload'],
     require => Vcsrepo['/opt/pe-slack-bot'],
   }

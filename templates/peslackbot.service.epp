@@ -1,3 +1,6 @@
+<%- |
+  String $slack_api_key,
+| -%>
 [Unit]
 Description = peslackbot
 After = pe-orchestration-services.service
@@ -7,7 +10,7 @@ User = pe-puppet
 Group = pe-puppet
 Type = simple
 Restart = always
-Environment=SLACK_API_TOKEN=<%= @slack_api_key %>
+Environment=SLACK_API_TOKEN=<%= $slack_api_key %>
 WorkingDirectory=/opt/pe-slack-bot
 ExecStart = /opt/puppetlabs/puppet/bin/puma
 StandardOutput=syslog

@@ -1,0 +1,11 @@
+<%- |
+  String $ca_server,
+  String $hostprivkey,
+  String $hostcert,
+  String $localcacert,
+| -%>
+---
+puppetdbhost: "<%= $ca_server %>"
+hostprivkey: "<%= $hostprivkey %>"
+hostpubkey: "<%= $hostcert %>"
+cakey: "<%= $localcacert %>"
