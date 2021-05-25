@@ -1,4 +1,5 @@
-#
+# Borrowed from ncorrarello - excellent work sir
+
 class pe_slack_bot (
   String $slack_api_key,
   String $host        = $settings::ca_server,
@@ -6,6 +7,8 @@ class pe_slack_bot (
   String $hostpubkey  = $settings::hostcert,
   String $cakey       = $settings::localcacert,
   String $mode        = 'install', # uninstall
+  String $source_repo = 'git://github.com/prolixalias/pe-slack-bot.git',
+  String $source_branch = 'main',
 ) {
 
   $ensure_latest = $mode ? {
@@ -64,8 +67,8 @@ class pe_slack_bot (
   vcsrepo { '/opt/pe-slack-bot':
     ensure   => $ensure_latest,
     provider => git,
-    source   => 'git://github.com/ncorrare/pe-slack-bot.git',
-    revision => 'master',
+    source   => $source_repo,
+    revision => $source_branch,
     require  => File["${settings::confdir}/peslackbot.yaml"],
   }
   file { '/opt/pe-slack-bot':
