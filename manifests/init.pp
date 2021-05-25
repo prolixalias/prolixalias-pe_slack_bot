@@ -1,33 +1,60 @@
+#
 class pe_slack_bot (
-  $slack_api_key,
-  $host        = $settings::ca_server,
-  $hostprivkey = $settings::hostprivkey,
-  $hostpubkey  = $settings::hostcert,
-  $cakey       = $settings::localcacert,
+  String $slack_api_key,
+  String $host        = $settings::ca_server,
+  String $hostprivkey = $settings::hostprivkey,
+  String $hostpubkey  = $settings::hostcert,
+  String $cakey       = $settings::localcacert,
+  String $mode        = 'install', # uninstall
 ) {
-  $gemdeps = ['puma','sinatra','dotenv','puppetdb-ruby','slack-ruby-bot','foreman','rspec','json_pure','rack-test']
 
-  package { 'gcc-c++':
-    ensure   => latest,
+  $ensure_latest = $mode ? {
+    'uninstall' => 'absent',
+    default     => 'latest',
   }
 
-  package { $gemdeps:
-    ensure   => latest,
+  $ensure_present = $mode ? {
+    'uninstall' => 'absent',
+    default     => 'present',
+  }
+
+  $ensure_running = $mode ? {
+    'uninstall' => 'stopped',
+    default     => 'running',
+  }
+
+  $ensure_directory = $mode ? {
+    'uninstall' => 'absent',
+    default     => 'directory',
+  }
+
+  $ensure_version_activesupport = $mode ? {
+    'uninstall' => 'absent',
+    default     => '4.2.6',
+  }
+
+  $gems = ['puma','sinatra','dotenv','puppetdb-ruby','slack-ruby-bot','foreman','rspec','json_pure','rack-test']
+
+  package { 'gcc-c++':
+    ensure   => $ensure_latest,
+  }
+
+  package { $gems:
+    ensure   => $ensure_latest,
     provider => 'puppet_gem',
     before   => Vcsrepo['/opt/pe-slack-bot'],
     require  => Package['gcc-c++'],
   }
 
   package { 'activesupport':
-    ensure   => '4.2.6',
+    ensure   => $ensure_version_activesupport,
     provider => 'puppet_gem',
     before   => Vcsrepo['/opt/pe-slack-bot'],
     require  => Package['gcc-c++'],
   }
 
-
   file { "${settings::confdir}/peslackbot.yaml":
-    ensure  => present,
+    ensure  => $ensure_present,
     owner   => 'pe-puppet',
     group   => 'pe-puppet',
     mode    => '0644',
@@ -35,21 +62,21 @@ class pe_slack_bot (
   }
 
   vcsrepo { '/opt/pe-slack-bot':
-    ensure   => latest,
+    ensure   => $ensure_latest,
     provider => git,
     source   => 'git://github.com/ncorrare/pe-slack-bot.git',
     revision => 'master',
     require  => File["${settings::confdir}/peslackbot.yaml"],
   }
   file { '/opt/pe-slack-bot':
-    ensure  => directory,
+    ensure  => $ensure_directory,
     owner   => 'pe-puppet',
     require => Vcsrepo['/opt/pe-slack-bot'],
     before  => Service['peslackbot'],
   }
 
   file { '/usr/lib/systemd/system/peslackbot.service':
-    ensure  => present,
+    ensure  => $ensure_present,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
@@ -63,7 +90,7 @@ class pe_slack_bot (
   }
 
   service { 'peslackbot':
-    ensure  => running,
+    ensure  => $ensure_running,
     enable  => true,
     require => File['/usr/lib/systemd/system/peslackbot.service'],
   }

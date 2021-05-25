@@ -1,12 +1,22 @@
 {
-  "name": "ncorrare-pe_slack_bot",
-  "version": "1.0.2",
-  "author": "ncorrare",
-  "summary": "A module to configure the pe-slack-bot for interacting with Puppet Orchestrator / PuppetDB",
+  "name": "prolixalias-pe_slack_bot",
+  "version": "2.0.1",
+  "author": "prolixalias",
+  "summary": "A borrowed module (credit to ncorrare) to configure pe-slack-bot to interact with Puppet Enterprise",
   "license": "Apache-2.0",
-  "source": "https://github.com/ncorrare/ncorrare-pe_slack_bot",
-  "project_page": "https://github.com/ncorrare/ncorrare-pe_slack_bot",
-  "issues_url": "https://github.com/ncorrare/ncorrare-pe_slack_bot/issues",
+  "source": "https://github.com/prolixalias/prolixalias-pe_slack_bot",
+  "project_page": "https://github.com/prolixalias/prolixalias-pe_slack_bot",
+  "issues_url": "https://github.com/prolixalias/prolixalias-pe_slack_bot/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 4.13.1 < 8.0.0"
+    },
+    {
+      "name": "puppetlabs-vcsrepo",
+      "version_requirement": ">= 3.1.0 < 8.0.0"
+    }
+  ],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
@@ -18,18 +28,11 @@
   ],
   "requirements": [
     {
-      "name": "pe",
-      "version_requirement": " >=2015.2.0 < 2016.2.0"
+      "name": "puppet",
+      "version_requirement": ">= 6.0.0 < 8.0.0"
     }
   ],
-  "dependencies": [
-    {
-      "name": "puppetlabs-stdlib",
-      "version_requirement": "4.x"
-    },
-    {
-      "name": "puppetlabs-vcsrepo",
-      "version_requirement": "1.x"
-    }
-  ]
+  "pdk-version": "2.1.0",
+  "template-url": "pdk-default#2.1.0",
+  "template-ref": "tags/2.1.0-0-ga675ea5"
 }

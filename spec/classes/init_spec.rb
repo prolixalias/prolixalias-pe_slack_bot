@@ -1,6 +1,6 @@
 require 'spec_helper'
-describe 'pe_slack_bot', :type => :class do
+describe 'pe_slack_bot', type: :class do
   describe 'without parameters' do
-          it { should_not compile }
+    it { is_expected.not_to compile }
   end
 end
